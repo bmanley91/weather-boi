@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import WeatherCard from './WeatherCard';
 import { convertKelvinToCelsius, convertKelvinToFahrenheit } from '../util/kelvin-converter';
+import spinner from '../resources/fidget-spinner.gif';
 
 class WeatherCardCollection extends Component {
     render() {
@@ -33,9 +34,7 @@ class WeatherCardCollection extends Component {
         }
 
         return (
-            <p>
-                Loading
-            </p>
+            <img src={spinner} alt="spinner" />
         );
     }
 }
