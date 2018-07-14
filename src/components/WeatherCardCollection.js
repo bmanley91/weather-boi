@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import WeatherCard from './WeatherCard';
-
-// const moment = require('moment');
+import { convertKelvinToCelsius, convertKelvinToFahrenheit } from '../util/kelvin-converter';
 
 class WeatherCardCollection extends Component {
     render() {
@@ -12,8 +11,12 @@ class WeatherCardCollection extends Component {
             return (
                 <ul>
                     { responseData.map((item) => {
-                        // Conver temp
-                        const temp = Math.round(item.main.temp - 273.15);
+                        let temp = 0;
+                        if (this.props.unit === 'celsius') {
+                            temp = convertKelvinToCelsius(item.main.temp);
+                        } else {
+                            temp = convertKelvinToFahrenheit(item.main.temp);
+                        }
 
                         return (
                             <li key={item.dt}>
@@ -39,10 +42,12 @@ class WeatherCardCollection extends Component {
 
 WeatherCardCollection.propTypes = {
     data: PropTypes.array,
+    unit: PropTypes.string,
 };
 
 WeatherCardCollection.defaultProps = {
     data: [],
+    unit: 'fahrenheit',
 };
 
 export default WeatherCardCollection;
