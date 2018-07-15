@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-core": "^6.26.3",
     "babel-plugin-emotion": "^9.2.5",
     "emotion": "^9.2.5",
     "moment": "^2.22.2",
@@ -20,13 +21,16 @@
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .js",
     "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom"
+    "test": "./node_modules/mocha/bin/mocha src/test/*Test.js --reporter spec --compilers js:babel-core/register"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0"
+    "eslint-plugin-react": "^7.10.0",
+    "mocha": "^5.2.0"
   }
 }
