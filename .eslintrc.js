@@ -2,6 +2,7 @@ module.exports = {
     "extends": "airbnb",
     "rules": {
         "indent": ["error", 4],
+        "no-plusplus": "off",
         "react/forbid-prop-types": "off",
         "react/jsx-filename-extension": "off",
         "react/jsx-indent": ["error", 4],
