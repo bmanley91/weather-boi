@@ -21,13 +21,13 @@ describe('The formatter can correctly parse OWA data', () => {
         const testOutput = formatData(inputData);
 
         assert.equal(testOutput.length, expectedOutput.length);
-        assert.equal(testOutput[0].date, expectedOutput[0].date);
-        assert.equal(testOutput[1].date, expectedOutput[1].date);
-        assert.equal(testOutput[0].low, expectedOutput[0].low);
-        assert.equal(testOutput[1].low, expectedOutput[1].low);
-        assert.equal(testOutput[0].high, expectedOutput[0].high);
-        assert.equal(testOutput[1].high, expectedOutput[1].high);
-        assert.equal(testOutput[0].weather, expectedOutput[0].weather);
-        assert.equal(testOutput[1].weather, expectedOutput[1].weather);
+        assert.equal(testOutput[0].getDate(), expectedOutput[0].getDate());
+        assert.equal(testOutput[1].getDate(), expectedOutput[1].getDate());
+        assert.equal(testOutput[0].getLow(), expectedOutput[0].getLow());
+        assert.equal(testOutput[1].getLow(), expectedOutput[1].getLow());
+        assert.equal(testOutput[0].getHigh(), expectedOutput[0].getHigh());
+        assert.equal(testOutput[1].getHigh(), expectedOutput[1].getHigh());
+        assert.equal(testOutput[0].getWeather(), expectedOutput[0].getWeather());
+        assert.equal(testOutput[1].getWeather(), expectedOutput[1].getWeather());
     });
 });
