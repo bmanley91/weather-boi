@@ -12,24 +12,26 @@ const ListContainer = styled('ul')`
 class WeatherCardCollection extends Component {
     render() {
         const { data, unit } = this.props;
-
         if (data !== undefined) {
             return (
                 <ListContainer>
-                    {data.map((item) => {
-                        let temp = 0;
+                    {data.map((weatherDay) => {
+                        let { low, high } = 0;
                         if (unit === 'celsius') {
-                            temp = convertKelvinToCelsius(item.main.temp);
+                            low = convertKelvinToCelsius(weatherDay.low);
+                            high = convertKelvinToCelsius(weatherDay.high);
                         } else {
-                            temp = convertKelvinToFahrenheit(item.main.temp);
+                            low = convertKelvinToFahrenheit(weatherDay.low);
+                            high = convertKelvinToFahrenheit(weatherDay.high);
                         }
 
                         return (
-                            <li key={item.dt}>
+                            <li key={weatherDay.getDate()}>
                                 <WeatherCard
-                                    date={item.dt_txt}
-                                    weather={item.weather[0].main}
-                                    temperature={temp}
+                                    date={weatherDay.getDate()}
+                                    weather={weatherDay.getWeather()}
+                                    high={high}
+                                    low={low}
                                 />
                             </li>
                         );

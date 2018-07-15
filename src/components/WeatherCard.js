@@ -14,7 +14,7 @@ const Container = styled('div')`
     margin-bottom: 10px;
     margin-right: 10px;
     padding-left 10px;
-    width: 200px;
+    width: 150px;
 `;
 
 function getWeatherImage(input) {
@@ -34,18 +34,19 @@ function getWeatherImage(input) {
 
 class WeatherCard extends Component {
     render() {
-        const { date, weather, temperature } = this.props;
+        const {
+            date, weather, high, low,
+        } = this.props;
 
         return (
             <Container>
                 <p>
-                    Datetime:
                     { date }
                 </p>
                 <img src={getWeatherImage(weather)} alt={weather} />
                 <p>
                     Temp:
-                    { temperature }
+                    { `${high} / ${low}` }
                 </p>
             </Container>
         );
@@ -55,13 +56,15 @@ class WeatherCard extends Component {
 WeatherCard.propTypes = {
     date: PropTypes.string,
     weather: PropTypes.string,
-    temperature: PropTypes.number,
+    high: PropTypes.number,
+    low: PropTypes.number,
 };
 
 WeatherCard.defaultProps = {
     date: '',
     weather: 'Clear',
-    temperature: 0,
+    high: 0,
+    low: 0,
 };
 
 export default WeatherCard;

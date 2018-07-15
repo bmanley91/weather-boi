@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+
+import formatData from '../util/data-formatter';
 import WeatherCardCollection from './WeatherCardCollection';
 import config from '../token.json';
 
 import '../styles/App.css';
-
 
 class App extends Component {
     constructor() {
@@ -25,7 +26,8 @@ class App extends Component {
             responseType: 'json',
         }).then((result) => {
             if (result.status === 200) {
-                this.setState({ error: false, data: result.data });
+                const formattedData = formatData(result.data.list);
+                this.setState({ error: false, data: formattedData });
             } else {
                 this.setState({ error: true });
             }
@@ -44,7 +46,7 @@ class App extends Component {
         }
 
         return (
-            <WeatherCardCollection data={data.list} />
+            <WeatherCardCollection data={data} />
         );
     }
 }
