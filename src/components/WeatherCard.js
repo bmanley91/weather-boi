@@ -1,6 +1,10 @@
 import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import clearweather from '../resources/clearweather.png';
+import rainweather from '../resources/rainweather.png';
+import cloudweather from '../resources/cloudyweather.png';
+import snowweather from '../resources/snowweather.png';
 
 const Container = styled('div')`
     border: solid;
@@ -13,6 +17,21 @@ const Container = styled('div')`
     width: 200px;
 `;
 
+function getWeatherImage(input) {
+    switch (input) {
+    case 'Clear':
+        return clearweather;
+    case 'Rain':
+        return rainweather;
+    case 'Clouds':
+        return cloudweather;
+    case 'Snow':
+        return snowweather;
+    default:
+        return null;
+    }
+}
+
 class WeatherCard extends Component {
     render() {
         const { date, weather, temperature } = this.props;
@@ -23,10 +42,7 @@ class WeatherCard extends Component {
                     Datetime:
                     { date }
                 </p>
-                <p>
-                    Weather:
-                    { weather }
-                </p>
+                <img src={getWeatherImage(weather)} alt={weather} />
                 <p>
                     Temp:
                     { temperature }
