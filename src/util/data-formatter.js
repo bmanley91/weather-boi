@@ -1,6 +1,5 @@
 import moment from 'moment';
 
-
 import ReportAggregate from '../model/ReportAggregate';
 import WeatherDay from '../model/WeatherDay';
 import WeatherReport from '../model/WeatherReport';
