@@ -1,4 +1,4 @@
-import styled, { css } from 'react-emotion'
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import WeatherCard from './WeatherCard';
@@ -11,29 +11,29 @@ const ListContainer = styled('ul')`
 
 class WeatherCardCollection extends Component {
     render() {
-        const responseData = this.props.data;
+        const { data, unit } = this.props;
 
-        if (responseData !== undefined) {
+        if (data !== undefined) {
             return (
                 <ListContainer>
-                        { responseData.map((item) => {
-                            let temp = 0;
-                            if (this.props.unit === 'celsius') {
-                                temp = convertKelvinToCelsius(item.main.temp);
-                            } else {
-                                temp = convertKelvinToFahrenheit(item.main.temp);
-                            }
+                    {data.map((item) => {
+                        let temp = 0;
+                        if (unit === 'celsius') {
+                            temp = convertKelvinToCelsius(item.main.temp);
+                        } else {
+                            temp = convertKelvinToFahrenheit(item.main.temp);
+                        }
 
-                            return (
-                                <li key={item.dt}>
-                                    <WeatherCard
-                                        date={item.dt_txt}
-                                        weather={item.weather[0].main}
-                                        temperature={temp}
-                                    />
-                                </li>
-                            );
-                        })}
+                        return (
+                            <li key={item.dt}>
+                                <WeatherCard
+                                    date={item.dt_txt}
+                                    weather={item.weather[0].main}
+                                    temperature={temp}
+                                />
+                            </li>
+                        );
+                    })}
                 </ListContainer>
             );
         }

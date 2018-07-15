@@ -1,4 +1,4 @@
-import styled, { css } from 'react-emotion';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -15,16 +15,21 @@ const Container = styled('div')`
 
 class WeatherCard extends Component {
     render() {
+        const { date, weather, temperature } = this.props;
+
         return (
             <Container>
                 <p>
-                    Datetime: { this.props.date }
+                    Datetime:
+                    { date }
                 </p>
                 <p>
-                    Weather: {this.props.weather}
+                    Weather:
+                    { weather }
                 </p>
                 <p>
-                    Temp: {this.props.temperature}
+                    Temp:
+                    { temperature }
                 </p>
             </Container>
         );

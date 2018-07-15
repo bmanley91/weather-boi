@@ -33,7 +33,9 @@ class App extends Component {
     }
 
     render() {
-        if (this.state.error) {
+        const { error, data } = this.state;
+
+        if (error) {
             return (
                 <p>
                     Error!
@@ -42,7 +44,7 @@ class App extends Component {
         }
 
         return (
-            <WeatherCardCollection data={this.state.data.list} />
+            <WeatherCardCollection data={data.list} />
         );
     }
 }
